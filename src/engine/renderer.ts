@@ -273,8 +273,9 @@ export class Renderer {
     gl.clearColor(fogColor[0], fogColor[1], fogColor[2], 1)
     gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT)
 
-    // niebo
+    // niebo (bez zapisu głębi — inaczej zasłoniłoby scenę)
     gl.disable(gl.DEPTH_TEST)
+    gl.depthMask(false)
     gl.useProgram(this.skyProgram)
     const cf = camCf
     gl.uniform3f(gl.getUniformLocation(this.skyProgram, 'uRight'), cf[3], cf[6], cf[9])
@@ -286,6 +287,7 @@ export class Renderer {
     gl.uniform3f(gl.getUniformLocation(this.skyProgram, 'uFogColor'), ...fogColor)
     gl.bindVertexArray(this.skyVao)
     gl.drawArrays(gl.TRIANGLES, 0, 3)
+    gl.depthMask(true)
     gl.enable(gl.DEPTH_TEST)
 
     // bryły
