@@ -6,6 +6,40 @@ Stan wiedzy: **28 października 2026**. Ten dokument dotyczy gier **Roblox Corpo
 
 ---
 
+## 0. Szybki start — wybrana droga: oficjalny klient
+
+### Windows / macOS
+
+1. Wejdź na **<https://www.roblox.com/download>** (wpisz adres ręcznie — nie klikaj w linki z reklam).
+2. Pobierz **Roblox Player** (kilkaset MB) i uruchom instalator.
+3. Zainstaluj, potem otwórz stronę gry na roblox.com i kliknij zielony przycisk grania — gra uruchomi się w aplikacji Roblox.
+4. Zaloguj się swoim kontem. Jeśli nie masz — utwórz je na roblox.com (data urodzenia wpływa na ustawienia bezpieczeństwa).
+
+### Android
+
+1. Otwórz **Google Play** i wyszukaj **Roblox** (wydawca: *Roblox Corporation*, kilkaset milionów pobrań — sprawdź wydawcę, nie samą nazwę).
+2. Zainstaluj i zaloguj się. Alternatywnie: przeglądarka → <https://www.roblox.com/download> przekieruje do sklepu.
+
+### iPhone / iPad
+
+1. **App Store** → **Roblox** (wydawca: *Roblox Corporation*).
+2. Zainstaluj i zaloguj się.
+
+### Zanim zagrasz — 5 minut, które ratują konto
+
+- **Włącz 2FA**: roblox.com → Settings → Security → *Authenticator App* (tokeny, nie SMS). Zapisz kody zapasowe.
+- **Zweryfikuj e-mail** — bez tego odzyskanie konta jest bardzo trudne.
+- **Ustaw PIN konta** i kod rodzicielski, jeśli ktoś jeszcze korzysta z urządzenia.
+- **Nie wpisuj hasła nigdzie poza `roblox.com` i aplikacją Roblox.** Każda strona „darmowe Robux", „generator", „sprawdzian wieku" to phishing.
+- **Nikomu nie wysyłaj `.ROBLOSECURITY`** ani kodu z aplikacji uwierzytelniającej — Roblox nigdy o nie nie prosi w wiadomości.
+- Nie instaluj „odblokowanych klientów" ani executorów: od 2025 r. Roblox automatycznie karze za modyfikowanego klienta, łącznie z trwałym banem.
+
+### Co dalej w tym repo
+
+Ten silnik zostaje jako **piaskownica do nauki**: prawdziwy Luau, te same wzorce (`Instance`, `Touched`, `RemoteEvent`), zero instalacji. Klawisz **F1** w grze wraca do tego przewodnika.
+
+---
+
 ## 1. Oficjalny klient — działa od ręki
 
 | Platforma | Droga | Status |
