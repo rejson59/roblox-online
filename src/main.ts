@@ -15,6 +15,7 @@ import { buildPlace } from './game/place'
 import { GAME_SCRIPTS } from './game/placeScripts'
 import { GuiOverlay } from './ui/guiOverlay'
 import { Hud } from './ui/hud'
+import { createRealRobloxPanel } from './ui/realRoblox'
 import { Studio } from './ui/studio'
 
 const $ = <T extends HTMLElement>(sel: string) => document.querySelector(sel) as T
@@ -94,6 +95,7 @@ async function bootInner(playerName: string) {
   input.onKey((name, down) => {
     if (!down) return
     if (name === 'F2' || name === 'Tab') studio?.toggle()
+    if (name === 'F1') realPanel.open()
     if (name === 'R') respawn()
     if (name === 'M') $('.rbx-chat')?.classList.toggle('active')
   })
@@ -107,6 +109,7 @@ async function bootInner(playerName: string) {
   })
   hud.addChat({ author: 'System', text: 'Witaj w Obby w Krakowie! Zbieraj monety i dobiegnij do mety.', color: '#ffd166' })
   hud.addChat({ author: 'System', text: 'WSAD — ruch, SPACJA — skok, mysz — kamera, kółko — zoom, F2 — Studio, R — respawn', color: '#8ab4f8' })
+  hud.addChat({ author: 'System', text: 'Chcesz zagrać w oryginalne gry Robloxa? Naciśnij F1.', color: '#ffd166' })
 
   studio = new Studio(app, () => server!.world, () => restart(), (id) => studio?.showProps(id))
   studio.refresh()
@@ -222,6 +225,12 @@ async function frame(now: number) {
   }
 }
 
+const realPanel = createRealRobloxPanel(
+  app,
+  'https://github.com/rejson59/roblox-online/blob/arena/3ae74037-roblox-online/docs/prawdziwy-roblox.md',
+)
+$('#real-link')?.addEventListener('click', () => realPanel.open())
+
 $('#docs-link')?.addEventListener('click', () => $('#about-panel').classList.remove('is-hidden'))
 $('#about-close')?.addEventListener('click', () => $('#about-panel').classList.add('is-hidden'))
 
@@ -240,6 +249,7 @@ nameInput.addEventListener('keydown', (e) => {
 
 // Diagnostyka dostępna z konsoli przeglądarki
 ;(window as any).roblox = {
+  get realPanel() { return realPanel },
   get server() { return server },
   get client() { return client },
   get world(): World | null { return server?.world ?? null },

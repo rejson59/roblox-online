@@ -13,6 +13,24 @@ npm run build    # produkcyjny build do dist/
 
 ---
 
+## ⚠️ To nie jest klient Robloxa — jak zagrać w oryginał
+
+Ten projekt jest **edukacyjnym silnikiem w stylu Robloxa**, nie klientem Roblox Corporation. Nie loguje do prawdziwego konta i nie łączy się z serwerami Robloxa — i nie da się tego zrobić legalnie z poziomu aplikacji webowej (szczegóły i źródła: **[docs/prawdziwy-roblox.md](docs/prawdziwy-roblox.md)**).
+
+Legalne drogi do oryginalnych gier:
+
+| Kiedy | Jak |
+|---|---|
+| **Teraz** (2 min) | oficjalny klient: [roblox.com/download](https://www.roblox.com/download), Google Play, App Store |
+| **Teraz, w karcie** | strumień prawdziwego Windowsa do przeglądarki (Guacamole / Sunshine / cloud PC) — działa, ale to remote desktop |
+| **Do końca 2026** | oficjalny web player Robloxa: Chrome, bez instalacji, z zalogowaniem ([zapowiedź RDC 2026](https://about.roblox.com/newsroom/2026/09/rdc-2026-the-world-needs-more-play)) |
+
+W grze ten sam ekran otworzysz klawiszem **F1** (albo przyciskiem „★ zagraj w prawdziwego Robloxa” w menu startowym).
+
+**Czego nie robimy:** nie zbieramy haseł, kodów 2FA ani ciasteczek `.ROBLOSECURITY`. Ciasteczko daje dostęp do strony www, ale nie do gry — potrzebny jest zamknięty silnik i szyfrowany protokół; w praktyce wklejanie sesji kończy się utratą konta.
+
+---
+
 ## ⚠️ Uczciwa notatka o APK Robloxa
 
 Pierwotne zadanie brzmiało: *pobrać oficjalne APK Robloxa, rozpakować je i na tej podstawie odtworzyć klienta*.

@@ -5,6 +5,7 @@ export const ROBLOX_KEY_NAMES: Record<string, string> = {
   KeyW: 'W', KeyA: 'A', KeyS: 'S', KeyD: 'D', Space: 'Space', ShiftLeft: 'LeftShift',
   ShiftRight: 'RightShift', KeyE: 'E', KeyF: 'F', KeyQ: 'Q', KeyR: 'R', KeyC: 'C',
   KeyX: 'X', KeyZ: 'Z', KeyM: 'M', Tab: 'Tab', Escape: 'Escape', Enter: 'Enter',
+  F1: 'F1', F2: 'F2',
   Digit1: 'One', Digit2: 'Two', Digit3: 'Three', ArrowUp: 'Up', ArrowDown: 'Down',
   ArrowLeft: 'Left', ArrowRight: 'Right',
 }
@@ -23,7 +24,7 @@ export class Input {
       if (name && !this.keys.has(name)) {
         this.keys.add(name)
         this.emit(name, true)
-        if (name === 'Space' || name === 'Tab') e.preventDefault()
+        if (name === 'Space' || name === 'Tab' || name === 'F1') e.preventDefault()
       }
     })
     window.addEventListener('keyup', (e) => {
