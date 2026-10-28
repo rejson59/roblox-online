@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>ROBLOX Online — Obby w Krakowie</title>
+    <meta name="description" content="Grywalny klon Robloxa w przeglądarce: własny silnik z Luau (WASM), fizyką i WebGL2." />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='18' fill='%23000'/><rect x='26' y='26' width='48' height='48' rx='8' fill='%23fff' transform='rotate(12 50 50)'/></svg>" />
+  </head>
+  <body>
+    <div id="app">
+      <canvas id="viewport"></canvas>
+
+      <div id="loader">
+        <div class="loader-card">
+          <div class="rbx-bigmark"></div>
+          <h1>ROBLOX <span>Online</span></h1>
+          <p class="loader-sub">Własny silnik w przeglądarce — Luau&nbsp;(WASM) + WebGL2</p>
+          <label class="name-row">
+            <span>Nazwa gracza</span>
+            <input id="player-name" maxlength="20" spellcheck="false" />
+          </label>
+          <button id="start-btn">▶ Dołącz do gry</button>
+          <div id="loader-text">Przygotowywanie…</div>
+          <div class="loader-links">
+            <button type="button" id="docs-link">jak to działa?</button>
+            <span>•</span>
+            <span>F2 — mini Studio</span>
+            <span>•</span>
+            <span>WSAD + spacja</span>
+          </div>
+          <div class="loader-note">
+            Nieoficjalny, edukacyjny silnik zgodny z API Robloxa. Nie jest powiązany z Roblox Corporation.
+          </div>
+        </div>
+
+        <div class="about-panel is-hidden" id="about-panel">
+          <h2>Jak to działa</h2>
+          <ul>
+            <li><b>Luau (WASM)</b> — prawdziwy interpreter Luau z oficjalnego repo Robloxa, ten sam język co w Roblox Studio.</li>
+            <li><b>Instancje</b> — drzewo <code>game</code> żyje w JavaScripcie, a skrypty widzą je przez mostek: <code>Instance.new</code>, <code>Parent</code>, <code>FindFirstChild</code>, <code>GetPropertyChangedSignal</code>…</li>
+            <li><b>Skrypty</b> — <code>Script</code> działa na „serwerze”, <code>LocalScript</code> na „kliencie”; między nimi działa replikacja i <code>RemoteEvent</code>.</li>
+            <li><b>Fizyka</b> — grawitacja 196,2 studa/s², kolizje AABB, <code>Touched</code>, <code>Raycast</code>, Humanoid z <code>WalkSpeed</code> i <code>JumpPower</code>.</li>
+            <li><b>Grafika</b> — własny renderer WebGL2: cienie z mapy cieni, mgła, materiał Neon.</li>
+            <li><b>Studio</b> — klawisz <b>F2</b> otwiera Explorer, podgląd właściwości i edytor <code>Source</code>.</li>
+          </ul>
+          <p class="about-foot">Gra jest w 100% offline: żadnych zewnętrznych CDN-ów ani assetów z serwerów Robloxa.</p>
+          <button type="button" id="about-close">Zamknij</button>
+        </div>
+      </div>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
