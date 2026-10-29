@@ -22,7 +22,7 @@ Legalne drogi do oryginalnych gier:
 | Kiedy | Jak |
 |---|---|
 | **Teraz** (2 min) | oficjalny klient: [roblox.com/download](https://www.roblox.com/download), Google Play, App Store |
-| **Teraz, w karcie** | strumień prawdziwego Windowsa do przeglądarki (Guacamole / Sunshine / cloud PC) — działa, ale to remote desktop |
+| **Teraz, w karcie** | strumień **prawdziwego klienta** do karty: [CloudMoon](https://web.cloudmoonapp.com/game/com.roblox.client/) (działa dziś, wersja mobilna, min. 6 Mbps) albo własny Windows przez Guacamole/Sunshine — szczegóły i ryzyka w [docs/prawdziwy-roblox.md](docs/prawdziwy-roblox.md) |
 | **Do końca 2026** | oficjalny web player Robloxa: Chrome, bez instalacji, z zalogowaniem ([zapowiedź RDC 2026](https://about.roblox.com/newsroom/2026/09/rdc-2026-the-world-needs-more-play)) |
 
 W grze ten sam ekran otworzysz klawiszem **F1** (albo przyciskiem „★ zagraj w prawdziwego Robloxa” w menu startowym).

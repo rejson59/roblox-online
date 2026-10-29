@@ -396,3 +396,10 @@ html, body {
 .real-warn b { color: #ffb4b4; }
 .real-warn p { margin: 5px 0 0; }
 .real-warn code { font-size: 11px; background: rgba(255, 255, 255, 0.1); padding: 1px 4px; border-radius: 4px; }
+
+.real-card-hit {
+  border-color: rgba(125, 211, 252, 0.45);
+  background: linear-gradient(180deg, rgba(125, 211, 252, 0.1), rgba(125, 211, 252, 0.03));
+  box-shadow: 0 0 0 1px rgba(125, 211, 252, 0.12), 0 10px 30px rgba(0, 0, 0, 0.25);
+}
+.real-card-hit .real-cta { margin-bottom: 6px; }

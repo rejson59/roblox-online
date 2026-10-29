@@ -79,7 +79,7 @@ export interface RealPanel {
   close(): void
 }
 
-export function createRealRobloxPanel(parent: HTMLElement, docsHref = '#prawdziwy-roblox'): RealPanel {
+export function createRealRobloxPanel(parent: HTMLElement, docsHref = 'https://github.com/rejson59/roblox-online/blob/arena/3ae74037-roblox-online/docs/prawdziwy-roblox.md'): RealPanel {
   const p = detectPlatform()
   const link = clientLink(p)
 
@@ -97,27 +97,29 @@ export function createRealRobloxPanel(parent: HTMLElement, docsHref = '#prawdziw
     <div class="real-cards">
       <div class="real-card">
         <div class="real-badge">Dostępne teraz</div>
-        <h3>1. Oficjalny klient Robloxa</h3>
-        <p>Najszybsza legalna droga „już teraz”: instalujesz oryginalną aplikację
-        i grasz we wszystkie gry, ze znajomymi i z Robuxami.</p>
+        <h3>1. Oficjalny klient (bez pośredników)</h3>
+        <p>Najczystsza droga: oryginalna aplikacja na Twoim sprzęcie, bez streamu
+        i bez pośredników. Wszystkie gry, znajomi, Robuxy, najniższe opóźnienie.</p>
         <a class="real-cta" href="${link.href}" target="_blank" rel="noopener noreferrer">${link.label} ↗</a>
         <p class="real-note">${link.note}</p>
       </div>
 
-      <div class="real-card">
-        <div class="real-badge real-badge-alt">W karcie, dziś</div>
-        <h3>2. Strumień prawdziwego klienta</h3>
-        <p>Roblox uruchomiony na prawdziwym Windowsie (Twoim PC albo wynajętym
-        cloud PC), a obraz trafia do przeglądarki przez WebRTC/VNC.
-        Legalne — zdalnie sterujesz własnym komputerem.</p>
-        <a class="real-cta real-cta-ghost" href="${docsHref}" data-real-docs>Instrukcja krok po kroku →</a>
-        <p class="real-note">Działa, ale to remote desktop: opóźnienie i jakość zależą od łącza.
-        Roblox nie wspiera maszyn wirtualnych, a serwisy „Roblox w przeglądarce” bywają blokowane.</p>
+      <div class="real-card real-card-hit">
+        <div class="real-badge real-badge-alt">Działa dziś — sprawdzone 29.10</div>
+        <h3>2. Strumień PRAWDZIWEGO klienta do karty</h3>
+        <p>Prawdziwy Roblox (aplikacja Android) uruchomiony na serwerze, obraz
+        strumieniowany do karty przeglądarki. Logujesz się <b>swoim kontem Robloxa</b>
+        — postęp, itemy i znajomi zostają. To nie klon: to oryginalna gra.</p>
+        <a class="real-cta" href="https://web.cloudmoonapp.com/game/com.roblox.client/" target="_blank" rel="noopener noreferrer">CloudMoon — zagraj w karcie ↗</a>
+        <a class="real-cta real-cta-ghost" href="${docsHref}" data-real-docs>Inne serwisy + ryzyka →</a>
+        <p class="real-note">Min. 6 Mbps. Wersja mobilna (sterowanie dotykowe/ekranowe).
+        To usługa zewnętrzna — Roblox traktuje chmurę jako „niewspieraną”, a now.gg
+        dostał blokadę w lutym 2026. Konto trzymaj pod 2FA.</p>
       </div>
 
       <div class="real-card">
         <div class="real-badge real-badge-wait">Zapowiedziane</div>
-        <h3>3. Oficjalny web player</h3>
+        <h3>3. Oficjalny web player Robloxa</h3>
         <p>Roblox zapowiedział na RDC 2026 granie w Chrome bez instalacji —
         <b>do końca 2026</b>: przycisk „graj” na stronie gry, wymagane logowanie,
         najpierw Chrome na Windows, macOS i Androidzie.</p>
@@ -134,6 +136,10 @@ export function createRealRobloxPanel(parent: HTMLElement, docsHref = '#prawdziw
       z przeglądarki, a wklejanie sesji do nieznanej aplikacji to najczęstszy sposób utraty konta.</p>
       <p>Narzędzia modyfikujące klienta (executory, „odblokowane” klienty) łamią regulamin Robloxa:
       od 2025 r. grożą za to bany, łącznie z trwałym.</p>
+      <p><b>Strumieniowanie w chmurze</b> to inna sytuacja: uruchamiasz <i>niezmienioną</i> oficjalną
+      aplikację, więc nie jest to „modified client”. Ryzyko jest inne: Roblox nie wspiera maszyn
+      wirtualnych, a dostawcy takich usług bywają blokowani (now.gg — luty 2026). Najbezpieczniejszy
+      wariant to strumień z <i>własnego</i> Windowsa lub wynajęty cloud PC.</p>
     </div>
 
     <button type="button" data-real-close>Zamknij</button>

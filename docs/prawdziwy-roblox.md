@@ -34,6 +34,10 @@ Stan wiedzy: **28 października 2026**. Ten dokument dotyczy gier **Roblox Corpo
 - **Nikomu nie wysyłaj `.ROBLOSECURITY`** ani kodu z aplikacji uwierzytelniającej — Roblox nigdy o nie nie prosi w wiadomości.
 - Nie instaluj „odblokowanych klientów" ani executorów: od 2025 r. Roblox automatycznie karze za modyfikowanego klienta, łącznie z trwałym banem.
 
+### Wolisz zostać w karcie przeglądarki?
+
+Przejdź do **sekcji 2** — CloudMoon streamuje prawdziwego klienta do karty i działa dziś.
+
 ### Co dalej w tym repo
 
 Ten silnik zostaje jako **piaskownica do nauki**: prawdziwy Luau, te same wzorce (`Instance`, `Touched`, `RemoteEvent`), zero instalacji. Klawisz **F1** w grze wraca do tego przewodnika.
@@ -54,35 +58,59 @@ Ten silnik zostaje jako **piaskownica do nauki**: prawdziwy Luau, te same wzorce
 
 To jest odpowiedź na „chcę teraz”: instalacja jest darmowa, a jedyne opóźnienie to czas pobrania (~300–500 MB).
 
-## 2. Prawdziwy klient w karcie przeglądarki — strumieniowanie
+## 2. Strumień PRAWDZIWEGO klienta do karty — działa dziś
 
-Idea: Roblox działa na **prawdziwym Windowsie**, a Ty widzisz jego obraz w przeglądarce i sterujesz nim zdalnie. To legalne — to zwykły remote desktop na Twoim własnym sprzęcie, bez modyfikowania klienta.
+To jest odpowiedź na „chcę oryginalnego Robloxa w przeglądarce **teraz**”.
 
-### 2A. Własny PC z Windowsem (najlepsza jakość)
+**Jak to działa:** prawdziwa aplikacja Robloxa (build Android) działa na serwerze dostawcy, a Ty dostajesz jej obraz w karcie przeglądarki i sterujesz nią zdalnie. Logujesz się **własnym kontem Robloxa** w normalnym oknie logowania Robloxa — postęp, itemy i znajomi zostają. To nie klon i nie podróbka: w środku działa oryginalny klient Roblox Corporation.
 
-**Wariant „najlepsza płynność” (aplikacja, nie karta):** Sunshine (host) + Moonlight (klient). Moonlight ma natywne aplikacje na Windows/macOS/Linux/Android/iOS/Apple TV — nie ma klienta webowego, ale opóźnienie jest najniższe z możliwych (~1 klatka w LAN).
+### Stan usług — sprawdzony 29 października 2026
 
-**Wariant „naprawdę w karcie”:** Apache Guacamole (RDP przez WebSocket) albo Kasm Workspaces / KasmVNC.
+| Usługa | Status dziś | Uwagi |
+|---|---|---|
+| **CloudMoon** | ✅ **działa** | <https://web.cloudmoonapp.com/game/com.roblox.client/> — „Roblox Cloud Game”, min. **6 Mbps**, logowanie oficjalnym kontem, treść zsynchronizowana z kontem. Wersja mobilna. |
+| **Easyfun** | ✅ oferuje | „Play on Browser”; osobne wejścia dla Roblox global / Roblox VNG. |
+| **now.gg** | ❌ **zablokowany** | Roblox odciął now.gg w **lutym 2026**; na stronie głównej nie ma już Robloxa. Nie licz na tę drogę. |
+| **Shadow PC / UgPhone** | ✅ | Wynajęty cloud PC (Windows) albo cloud Android — instalujesz tam oficjalnego Robloxa. Najbliżej „1:1”, płatne. |
+| **Oficjalny web player** | ⏳ **jeszcze nie** | Zapowiedź na koniec 2026 (Chrome). Dziś nie ma publicznego przycisku. |
 
-Minimalny zarys (Guacamole, Docker na dowolnym Linuxie w sieci LAN):
+### Krok po kroku (CloudMoon)
 
-1. Na Windowsie: **Ustawienia → System → Zdalny pulpit → włącz** (wymaga Windows 11/10 **Pro**; Home nie ma serwera RDP).
-2. Na maszynie z Dockerem uruchom `guacamole/guacd` + `guacamole/guacamole` + bazę (Postgres/MySQL) — oficjalna instrukcja: <https://guacamole.apache.org/doc/gug/guacamole-docker.html>.
-3. W panelu Guacamole dodaj połączenie RDP wskazujące na IP Windowsa (port 3389), ustaw rozdzielczość i skalowanie.
-4. Otwórz `https://<host>/guacamole` w przeglądarce — to już pulpit Windowsa; uruchom tam Robloxa.
+1. Otwórz w Chrome/Edge: `https://web.cloudmoonapp.com/game/com.roblox.client/`
+2. Kliknij **Play** (dopuszczalna reklama / krótkie oczekiwanie na sesję).
+3. Gdy w oknie pojawi się ekran Robloxa — zaloguj się **swoim loginem i hasłem Robloxa** (to oryginalne okno logowania, ale hostowane na ich maszynie — patrz ryzyka niżej).
+4. Wybierz grę z listy / wpisz nazwę doświadczenia.
+5. Sterowanie: dotyk/ekranowe odpowiedniki (to build mobilny). Podłącz mysz i klawiaturę — będzie wygodniej.
+6. Po skończeniu **wyloguj się** w oknie Robloxa i zamknij sesję.
 
-**Uczciwe ograniczenia:**
+### Ryzyka — bez owijania
 
-- RDP/WebRTC dodaje opóźnienie — gry zręcznościowe będą odczuwalnie „ciężkie”, obby i gry turowane są OK.
-- Roblox **nie wspiera** maszyn wirtualnych ani zdalnych pulpitów. Działa, ale nie jest to konfiguracja oficjalna.
-- Sesja RDP może wyłączyć akcelerację GPU na hoście; najlepiej, gdy Roblox działa na **drugiej** maszynie/VM z przekazanym GPU.
-- Nie loguj się przez RDP do maszyny, na której ktoś inny jest zalogowany — Windows tego nie lubi.
+| Ryzyko | Waga | Co zrobić |
+|---|---|---|
+| Sesja żyje na maszynie dostawcy | **wysokie** | Konto pod **2FA**, unikalne hasło, po grze wyloguj się i (opcjonalnie) „Log out of all other sessions” w ustawieniach Robloxa. |
+| Roblox nie wspiera maszyn wirtualnych/chmury | średnie | To nie jest „modified client” (klient jest niezmieniony), ale wsparcie może odmówić pomocy. |
+| Dostawca może zostać zablokowany jak now.gg | średnie | Nie kupuj długich pakietów; traktuj jako rozwiązanie tymczasowe. |
+| Opóźnienie, jakość, reklamy | niskie/średnie | Min. 6 Mbps, najlepiej Ethernet; wybierz serwer najbliżej Polski. |
+| Wersja mobilna, nie desktopowa | niskie | Część gier ma inne UI/sterowanie; da się podłączyć klawiaturę i mysz. |
 
-### 2B. Cloud PC
+### Wariant „najbezpieczniejszy” (bez pośrednika w chmurze)
 
-Wynajmij Windowsa z GPU (AWS `g4dn`/`g5`, Paperspace, Shadow) → zainstaluj tam oficjalnego Robloxa → połącz się przez Parsec/Guacamole/Sunshine. Zaleta: działa nawet na słabym laptopie czy Chromebooku. Wady: abonament, opóźnienie zależne od odległości do serwerowni, a Roblox nadal traktuje VM jako konfigurację niewspieraną.
+Strumień z **własnego** Windowsa — wtedy klient jest nie tylko niezmieniony, ale i uruchomiony na sprzęcie, którego jesteś właścicielem:
 
-Platformy chmurowe, które wprost oferowały „Roblox w przeglądarce” (np. now.gg), **były blokowane przez Robloxa** i ich dostępność się zmienia — traktuj je jako niestabilne, a nie jako rozwiązanie.
+- **Sunshine + Moonlight** (najniższe opóźnienie; Moonlight ma natywne aplikacje, nie wersję webową),
+- **Apache Guacamole** (RDP przez WebSocket → prawdziwa karta przeglądarki; wymaga Windows **Pro** i włączonego Zdalnego pulpitu),
+- **Kasm Workspaces / KasmVNC** jako alternatywa dla Guacamole.
+
+Konfiguracja Guacamole (Docker) — skrót:
+
+1. Windows: **Ustawienia → System → Zdalny pulpit → włącz**.
+2. Na maszynie z Dockerem: `guacd` + `guacamole` + baza; instrukcja: <https://guacamole.apache.org/doc/gug/guacamole-docker.html>.
+3. W panelu dodaj połączenie RDP → IP Windowsa, port 3389.
+4. Otwórz `https://<host>/guacamole` w przeglądarce i uruchom tam Robloxa.
+
+To jest w 100% oryginalny klient na Twoim sprzęcie, a przeglądarka służy tylko jako ekran. Minus: potrzebujesz Windowsa i trochę czasu na konfigurację.
+
+---
 
 ## 3. Oficjalny web player (zapowiedź Robloxa)
 
